@@ -52,6 +52,10 @@ export class ListDataComponent implements OnInit {
     }
   }
 
+  navigateToInactive() {
+    this.router.navigate(['app-list-data-inactive']);
+  }
+
   deleteLogical(index: number) {
     if (index >= 0 && index < this.flagActive.length) {
       const dataItem = this.flagActive[index];
@@ -60,7 +64,6 @@ export class ListDataComponent implements OnInit {
         this.googleSheetService.deleteLogical(dataIndex).subscribe(
           (response) => {
             console.log('El estado se ha actualizado con éxito: ', response);
-            // Después de eliminar con éxito, también elimina el elemento de flagActive
             this.flagActive.splice(index, 1);
           },
           (error) => {

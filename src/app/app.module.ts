@@ -7,6 +7,7 @@ import { ListDataComponent } from './components/list-data/list-data.component';
 import {HttpClientModule} from "@angular/common/http";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { ListDataInactiveComponent } from './components/list-data-inactive/list-data-inactive.component';
+import {NgOptimizedImage} from "@angular/common";
 
 @NgModule({
   declarations: [
@@ -14,13 +15,14 @@ import { ListDataInactiveComponent } from './components/list-data-inactive/list-
     ListDataComponent,
     ListDataInactiveComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule,
-    ReactiveFormsModule,
-    FormsModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        HttpClientModule,
+        ReactiveFormsModule,
+        FormsModule,
+        NgOptimizedImage
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

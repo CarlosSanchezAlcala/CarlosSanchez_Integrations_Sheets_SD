@@ -27,4 +27,14 @@ export class GoogleSheetService {
     return this.http.patch(updateUrl, body, { headers });
   }
 
+  reactivateLogical(index: number): Observable<any> {
+    const updateUrl = `${this.urlConection}/${index}`;
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json'
+    });
+    const body = JSON.stringify({ FLAG: 'A' });
+
+    return this.http.patch(updateUrl, body, { headers });
+  }
+
 }

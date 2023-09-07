@@ -1,1 +1,82 @@
-<p>list-data-inactive works!</p>
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <a class="navbar-brand">
+      <img ngSrc="/assets/SOA-CAÑETE.png" alt="SoaCañete" width="40" height="34"
+           class="d-inline-block align-text-top">
+      Servicio de Orientación al Adolescente
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" routerLink="legal-guardian">
+            Documentos SOA
+          </a>
+        </li>
+      </ul>
+      <form class="d-flex" role="search">
+        <input [(ngModel)]="searchDNI" name="searchDNI" maxlength="8" class="form-control me-2" type="search"
+               (input)="searchByDni()" placeholder="Buscar persona..." aria-label="Search">
+      </form>
+    </div>
+  </div>
+</nav>
+
+<h1 class="titleWeb" align="center">
+  Documentos SOA - Cañete
+</h1>
+
+<div class="buttonLegalGuardian">
+  <button id="buttonNewTutor" class="btn btn-success" (click)="navigateToActive()">
+    Documentos Activos
+  </button>
+</div>
+
+<div class="styleCharge">
+  <div *ngIf="isSearching" class="loader"></div>
+</div>
+
+<div class="tableDataSheet">
+  <table class="table table-sm table-striped row-border hover">
+    <thead class="table-light">
+    <tr align="center">
+      <th scope="col">TYPE</th>
+      <th scope="col">ID</th>
+      <th scope="col">FLAG</th>
+      <th scope="col">DNI</th>
+      <th scope="col">URL</th>
+      <th scope="col">DATE</th>
+      <th scope="col">ACTIONS</th>
+    </tr>
+    </thead>
+    <tbody class="table-group-divider">
+    <tr align="center"
+        *ngFor="let datasSheet of (searchResults.length > 0 ? searchResults : flagInactive); let i = index">
+      <td>
+        {{datasSheet.TIPO}}
+      </td>
+      <td>
+        {{datasSheet.ID}}
+      </td>
+      <td>
+        {{datasSheet.FLAG}}
+      </td>
+      <td>
+        {{datasSheet.DNI}}
+      </td>
+      <td>
+        <a [href]="datasSheet.URL" target="_blank">
+          {{datasSheet.URL}}
+        </a>
+      </td>
+      <td>{{datasSheet.FECHA}}</td>
+      <td>
+        <button class="btn btn-warning" (click)="reactivateLogical(i)">Reactivar</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>

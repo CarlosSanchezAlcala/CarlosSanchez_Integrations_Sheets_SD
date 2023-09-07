@@ -1,0 +1,46 @@
+/* Importaciones de Fuentes de Letras */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+
+.loader {
+  border: 16px solid #f3f3f3; /* Color del borde exterior */
+  border-top: 16px solid #3498db; /* Color del borde superior */
+  border-radius: 50%; /* Forma circular */
+  width: 120px; /* Ancho del círculo */
+  height: 120px; /* Altura del círculo */
+  animation: spin 2s linear infinite; /* Animación de giro */
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.styleCharge {
+  display: flex;
+  justify-content: center;
+  margin: 10px;
+}
+
+.titleWeb {
+  margin-top: 50px;
+  font-size: 50px;
+  font-family: 'Lobster', cursive;
+  text-align: center;
+}
+
+.RowAndColumn {
+  text-align: center;
+  vertical-align: middle;
+}
+
+.tableDataSheet {
+  margin-left: 2%;
+  margin-right: 2%;
+}
+
+.buttonLegalGuardian {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
