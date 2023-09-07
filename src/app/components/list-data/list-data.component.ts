@@ -53,18 +53,21 @@ export class ListDataComponent implements OnInit {
   }
 
   deleteLogical(index: number) {
-    const dataIndex = this.dataGoogleSheet.indexOf(this.flagActive[index]);
-    if (dataIndex !== -1) {
-      const dataItem = this.dataGoogleSheet[dataIndex];
-      this.googleSheetService.deleteLogical(index).subscribe(
-        (response) => {
-          console.log('El estado se ha actualizado con éxito: ', response);
-        },
-        (error) => {
-          console.error('Error o problemas al actualizar el estado: ', error);
-        }
-      )
+    if (index >= 0 && index < this.flagActive.length) {
+      const dataItem = this.flagActive[index];
+      const dataIndex = this.dataGoogleSheet.indexOf(dataItem);
+      if (dataIndex !== -1) {
+        this.googleSheetService.deleteLogical(dataIndex).subscribe(
+          (response) => {
+            console.log('El estado se ha actualizado con éxito: ', response);
+            // Después de eliminar con éxito, también elimina el elemento de flagActive
+            this.flagActive.splice(index, 1);
+          },
+          (error) => {
+            console.error('Error o problemas al actualizar el estado: ', error);
+          }
+        );
+      }
     }
-
   }
 }
